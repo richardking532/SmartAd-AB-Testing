@@ -1,0 +1,403 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={SmartAd AB Testing},
+  pdfauthor={Richard King},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{SmartAd AB Testing}
+\author{Richard King}
+\date{2023-09-17}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
+
+Since I've become fairly proficient in R, I decided to start leaning
+more heavily into the statistical aspect of the language. I recently
+took some courses in statistics and statistical programming in R, and I
+wanted to do some projects to apply what I learned.
+
+I found this data from an A/B ad test on Kaggle and decided to use it to
+practice running a two sample t-test. Participants in the test were
+divided into a control and exposed group and shown either dummy ad or a
+creative, interactive SmartAd brand ad. Response rates were recorded
+along with info on when participants responded and what device, browser,
+and operating system they were using.
+
+I'm definitely still wrapping my head around some of these statistical
+concepts, so any feedback that will help me learn is greatly
+appreciated!
+
+\hypertarget{data-exploration}{%
+\subsection{Data Exploration}\label{data-exploration}}
+
+We will begin by loading our data and doing a bit of exploration to
+better understand the data from this A/B test.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"\textasciitilde{}/GitHub/SmartAd{-}AB{-}Testing/SmartAd AB Testing Data.csv"}\NormalTok{)}
+\FunctionTok{glimpse}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 8,077
+## Columns: 9
+## $ auction_id  <chr> "0008ef63-77a7-448b-bd1e-075f42c55e39", "000eabc5-17ce-413~
+## $ experiment  <chr> "exposed", "exposed", "exposed", "control", "control", "co~
+## $ date        <date> 2020-07-10, 2020-07-07, 2020-07-05, 2020-07-03, 2020-07-0~
+## $ hour        <dbl> 8, 10, 2, 15, 15, 15, 15, 5, 0, 14, 13, 6, 8, 8, 15, 16, 1~
+## $ device_make <chr> "Generic Smartphone", "Generic Smartphone", "E5823", "Sams~
+## $ platform_os <dbl> 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6~
+## $ browser     <chr> "Chrome Mobile", "Chrome Mobile", "Chrome Mobile WebView",~
+## $ yes         <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0~
+## $ no          <dbl> 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0~
+\end{verbatim}
+
+We should first confirm that all the values in the ``auction\_id''
+column are actually unique.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{duplicated}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{auction\_id))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+None of the ``auction\_id'' values are duplicated. We should also check
+for any missing values that could skew the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(df))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+Great! None of our values are missing. Next let's look at how many and
+what percentage of users are in the control and exposed groups.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(experiment) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{percent =} \DecValTok{100}\SpecialCharTok{*}\NormalTok{count}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(count))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   experiment count percent
+##   <chr>      <int>   <dbl>
+## 1 control     4071    50.4
+## 2 exposed     4006    49.6
+\end{verbatim}
+
+The control and exposed groups appear to have approximately the same
+number of users.
+
+We can make a quick plot to look better understand how many users
+responded each day that the A/B test ran for. We are specifically
+looking at users who responded to the ads, so we need to filter our
+results to those users who chose either ``yes'' or ``no''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resp\_by\_date }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(date, yes, no) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(yes }\SpecialCharTok{==} \DecValTok{1} \SpecialCharTok{|}\NormalTok{ no }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(date) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{yes =} \FunctionTok{sum}\NormalTok{(yes), }\AttributeTok{no =} \FunctionTok{sum}\NormalTok{(no)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{date, }\AttributeTok{names\_to =} \StringTok{"response"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"count"}\NormalTok{)}
+
+\NormalTok{resp\_by\_date}\SpecialCharTok{$}\NormalTok{response }\OtherTok{=} \FunctionTok{factor}\NormalTok{(resp\_by\_date}\SpecialCharTok{$}\NormalTok{response, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{)) }\CommentTok{\# Reorder factor levels}
+
+\NormalTok{date\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(resp\_by\_date, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{as.factor}\NormalTok{(date), }\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{fill =}\NormalTok{ response)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"User Responses Each Day"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Date"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Number of Responses"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_fill\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Responses"}\NormalTok{, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"3 Jul"}\NormalTok{, }\StringTok{"4 Jul"}\NormalTok{, }\StringTok{"5 Jul"}\NormalTok{, }\StringTok{"6 Jul"}\NormalTok{, }\StringTok{"7 Jul"}\NormalTok{, }\StringTok{"8 Jul"}\NormalTok{, }\StringTok{"9 Jul"}\NormalTok{, }\StringTok{"10 Jul"}\NormalTok{))}
+
+\NormalTok{date\_plot}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SmartAd-AB-Testing_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+It seems a bit odd that the test would run eight days instead of just
+one week. 3 July 2020 was a Friday and had noticeably more responses
+than the other days. Let's also look at how user responses vary across
+an average day.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resp\_by\_hour }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(hour, yes, no) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(yes }\SpecialCharTok{==} \DecValTok{1} \SpecialCharTok{|}\NormalTok{ no }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(hour) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{yes =} \FunctionTok{sum}\NormalTok{(yes), }\AttributeTok{no =} \FunctionTok{sum}\NormalTok{(no)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{hour, }\AttributeTok{names\_to =} \StringTok{"response"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"count"}\NormalTok{)}
+
+\NormalTok{hour\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(resp\_by\_hour, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{as.factor}\NormalTok{(hour), }\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{fill =}\NormalTok{ response)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"User Responses Each Day"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Hour of the Day"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Number of Responses"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_fill\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Responses"}\NormalTok{, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{))}
+
+\NormalTok{hour\_plot}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SmartAd-AB-Testing_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+That is definitely interesting. I wonder what causes that spike at 3 pm.
+
+\hypertarget{statistical-analysis}{%
+\subsection{Statistical Analysis}\label{statistical-analysis}}
+
+Now that we have gotten a better grasp on what our data looks like, we
+can move into our statistical analysis. We can use a two sample t-test
+to compare the mean response rates between our control and exposed
+groups. We first need to define our null and alternate hypotheses.
+
+Null Hypothesis (H0): ``There is no difference in response rates between
+the control and exposed groups.''
+
+Alternate Hypothesis (H1): ``There is a difference in response rates
+between the control and exposed groups.''
+
+We will set our significance level (alpha) equal to 0.05. The response
+rate for the exposed group could be either higher or lower than that of
+the control group, so this will be a two-tailed test.
+
+Since we are just interested in users from each group who responded
+``yes'' or ``no'', we will create a data frame to capture just those
+users.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{responses }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(yes }\SpecialCharTok{==} \DecValTok{1} \SpecialCharTok{|}\NormalTok{ no }\SpecialCharTok{==} \DecValTok{1}\NormalTok{)}
+\FunctionTok{glimpse}\NormalTok{(responses)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 1,243
+## Columns: 9
+## $ auction_id  <chr> "0016d14a-ae18-4a02-a204-6ba53b52f2ed", "008aafdf-deef-448~
+## $ experiment  <chr> "exposed", "exposed", "exposed", "control", "control", "ex~
+## $ date        <date> 2020-07-05, 2020-07-04, 2020-07-06, 2020-07-08, 2020-07-0~
+## $ hour        <dbl> 2, 16, 8, 4, 15, 2, 15, 6, 15, 14, 15, 13, 20, 6, 20, 2, 1~
+## $ device_make <chr> "E5823", "Generic Smartphone", "Generic Smartphone", "Sams~
+## $ platform_os <dbl> 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6~
+## $ browser     <chr> "Chrome Mobile WebView", "Chrome Mobile", "Chrome Mobile",~
+## $ yes         <dbl> 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1~
+## $ no          <dbl> 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0~
+\end{verbatim}
+
+It appears only 1,243 of the total 8,077 users responded to the ad. We
+should identify how many from each group responded ``yes'' or ``no'' as
+well as the conversion rate (the percent of users who responded
+``yes'').
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resp }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(experiment) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{yes =} \FunctionTok{sum}\NormalTok{(yes), }\AttributeTok{no =} \FunctionTok{sum}\NormalTok{(no)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{count =}\NormalTok{ yes }\SpecialCharTok{+}\NormalTok{ no) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{conv\_rate =}\NormalTok{ yes}\SpecialCharTok{/}\NormalTok{(yes }\SpecialCharTok{+}\NormalTok{ no)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(experiment, count, conv\_rate, yes, no)}
+\NormalTok{resp}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 5
+##   experiment count conv_rate   yes    no
+##   <chr>      <dbl>     <dbl> <dbl> <dbl>
+## 1 control      586     0.451   264   322
+## 2 exposed      657     0.469   308   349
+\end{verbatim}
+
+Looks like the conversion rate for the control group is 45.1\% and the
+rate for the exposed group is 46.9\%. That seems like a pretty small
+difference, but the key question is whether the difference is
+statistically significant. Let's first reformat the responses for our
+control and exposed groups so that we can feed it into R's t.test()
+function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{control }\OtherTok{\textless{}{-}}\NormalTok{ responses }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{control =} \FunctionTok{ifelse}\NormalTok{(experiment }\SpecialCharTok{==} \StringTok{"control"}\NormalTok{, yes, }\ConstantTok{NA}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(control) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{drop\_na}\NormalTok{(control)}
+
+\NormalTok{exposed }\OtherTok{\textless{}{-}}\NormalTok{ responses }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{exposed =} \FunctionTok{ifelse}\NormalTok{(experiment }\SpecialCharTok{==} \StringTok{"exposed"}\NormalTok{, yes, }\ConstantTok{NA}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(exposed) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{drop\_na}\NormalTok{(exposed)}
+\end{Highlighting}
+\end{Shaded}
+
+Now we can run our t-test.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(exposed, control, }\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{, }\AttributeTok{var.equal =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  exposed and control
+## t = 0.64537, df = 1225.7, p-value = 0.5188
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.03730157  0.07387281
+## sample estimates:
+## mean of x mean of y 
+## 0.4687976 0.4505119
+\end{verbatim}
+
+It appears our p-value is 0.5188, which is greater than our significance
+level of 0.05, which means we cannot reject our null hypothesis.
+
+\hypertarget{conclusion}{%
+\subsection{Conclusion}\label{conclusion}}
+
+The fact that we cannot reject our null hypothesis suggests that there
+is no statistically significant difference in response rates between
+those who saw the SmartAd and those who saw the dummy ad. If the
+business running this test was considering switching to SmartAds, it
+would not be worth increasing spending to make that shift.
+
+The peak in responses on 3 July and the spike in average responses at 3
+pm each day are two curiosities that might be worth exploring in the
+future. I would also be interested in breaking down response rates by
+device, browser, and operating system and seeing if perhaps one of those
+variables causes a statistically significant difference in response
+rates.
+
+Thanks for reading! As mentioned previously, feedback is always
+appreciated!
+
+\end{document}
