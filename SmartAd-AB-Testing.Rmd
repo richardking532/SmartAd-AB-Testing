@@ -2,14 +2,16 @@
 title: "SmartAd AB Testing"
 author: "Richard King"
 date: "2023-09-17"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ## Introduction
 
-Since I've become fairly proficient in R, I decided to start leaning more heavily into the statistical aspect of the language. I recently took some courses in statistics and statistical programming in R, and I wanted to do some projects to apply what I learned. 
+Since I've become fairly proficient in R, I decided to start leaning more heavily into the statistical aspect of the language. I recently took some courses in statistics and statistical programming in R, and I wanted to do some projects to apply what I learned.
 
-I found this data from an A/B ad test on Kaggle and decided to use it to practice running a two sample t-test. Participants in the test were divided into a control and exposed group and shown either dummy ad or a creative, interactive SmartAd brand ad. Response rates were recorded along with info on when participants responded and what device, browser, and operating system they were using. 
+I found this data from an A/B ad test on Kaggle and decided to use it to practice running a two sample t-test. Participants in the test were divided into a control and exposed group and shown either dummy ad or a creative, interactive SmartAd brand ad. Response rates were recorded along with info on when participants responded and what device, browser, and operating system they were using.
 
 I'm definitely still wrapping my head around some of these statistical concepts, so any feedback that will help me learn is greatly appreciated!
 
@@ -22,6 +24,8 @@ library(tidyverse)
 df <- read_csv("~/GitHub/SmartAd-AB-Testing/SmartAd AB Testing Data.csv")
 glimpse(df)
 ```
+
+```{=html}
 <table>
 
 Term           Definition
@@ -39,17 +43,19 @@ yes            1 if the user chooses the “Yes” radio button for the ad
 no             1 if the user chooses the “No” radio button for the ad
 
 </table>
-
+```
 We should first confirm that all the values in the "auction_id" column are actually unique.
 
 ```{r}
 sum(duplicated(df$auction_id))
 ```
+
 None of the "auction_id" values are duplicated. We should also check for any missing values that could skew the data.
 
 ```{r}
 sum(is.na(df))
 ```
+
 Great! None of our values are missing. Next let's look at how many and what percentage of users are in the control and exposed groups.
 
 ```{r}
@@ -82,6 +88,7 @@ date_plot <- ggplot(resp_by_date, aes(x = as.factor(date), y = count, fill = res
 
 date_plot
 ```
+
 <br>
 
 It seems a bit odd that the test would run eight days instead of just one week. 3 July 2020 was a Friday and had noticeably more responses than the other days. Let's also look at how user responses vary across an average day.
@@ -102,6 +109,7 @@ hour_plot <- ggplot(resp_by_hour, aes(x = as.factor(hour), y = count, fill = res
 
 hour_plot
 ```
+
 <br>
 
 That is definitely interesting. I wonder what causes that spike at 3 pm.
@@ -116,13 +124,14 @@ Alternate Hypothesis (H1): "There is a difference in response rates between the 
 
 We will set our significance level (alpha) equal to 0.05. The response rate for the exposed group could be either higher or lower than that of the control group, so this will be a two-tailed test.
 
-Since we are just interested in users from each group who responded "yes" or "no", we will create a  data frame to capture just those users.
+Since we are just interested in users from each group who responded "yes" or "no", we will create a data frame to capture just those users.
 
 ```{r}
 responses <- df %>%
   filter(yes == 1 | no == 1)
 glimpse(responses)
 ```
+
 It appears only 1,243 of the total 8,077 users responded to the ad. We should identify how many from each group responded "yes" or "no" as well as the conversion rate (the percent of users who responded "yes").
 
 ```{r}
@@ -135,6 +144,7 @@ resp <- df %>%
 resp
 
 ```
+
 Looks like the conversion rate for the control group is 45.1% and the rate for the exposed group is 46.9%. That seems like a pretty small difference, but the key question is whether the difference is statistically significant. Let's first reformat the responses for our control and exposed groups so that we can feed it into R's t.test() function.
 
 ```{r, message = FALSE}
@@ -154,7 +164,8 @@ Now we can run our t-test.
 ```{r}
 t.test(exposed, control, alternative = "two.sided", var.equal = FALSE)
 ```
-It appears our p-value is 0.5188, which is greater than our significance level of 0.05, which means we cannot reject our null hypothesis. 
+
+It appears our p-value is 0.5188, which is greater than our significance level of 0.05, which means we cannot reject our null hypothesis.
 
 ## Conclusion
 
@@ -164,6 +175,4 @@ The peak in responses on 3 July and the spike in average responses at 3 pm each 
 
 Thanks for reading! As mentioned previously, feedback is always appreciated!
 
-<br>
-<br>
-<br>
+<br> <br> <br>
