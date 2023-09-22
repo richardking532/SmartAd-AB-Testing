@@ -25,7 +25,6 @@ df <- read_csv("~/GitHub/SmartAd-AB-Testing/SmartAd AB Testing Data.csv")
 glimpse(df)
 ```
 
-```{=html}
 <table>
 
 Term           Definition
@@ -43,7 +42,7 @@ yes            1 if the user chooses the “Yes” radio button for the ad
 no             1 if the user chooses the “No” radio button for the ad
 
 </table>
-```
+
 We should first confirm that all the values in the "auction_id" column are actually unique.
 
 ```{r}
